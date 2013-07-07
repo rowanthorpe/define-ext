@@ -1,5 +1,5 @@
 define-ext: plugin-based embedder of compiled foreign code for newLISP (www.newlisp.org)
-Version 0.4.1
+Version 0.4.2
 Copyright (c) 2011-2013 Rowan Thorpe
 
 A newLISP macro which allows the user to "define" callable foreign code inline
