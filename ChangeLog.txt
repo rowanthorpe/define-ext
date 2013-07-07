@@ -1,3 +1,19 @@
+2013-07-07  Rowan Thorpe  <rowan@rowanthorpe.com>
+
+    * Patch-Version bump (v0.4.1)
+
+    * Separate TODOs into a TODO file.
+
+    * Update contact email address.
+
+    * Update copyright years.
+
+    * Migrate from sourceforge to github hosting.
+
+    * Add summary info and use ASCII-friendly copyright symbol in README.
+
+    * Add empty .gitignore
+
 2012-01-10  Rowan Thorpe  <rowanthorpe@gmail.com>
 
 	* Minor-Version bump (v0.4)

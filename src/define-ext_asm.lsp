@@ -1,6 +1,6 @@
 ; define-ext_asm.lsp: plugin-file for define-ext, plugin-based
 ;                     foreign code embedder for newLISP (www.newlisp.org)
-; Copyright © 2011 Rowan Thorpe
+; Copyright (c) 2011-2013 Rowan Thorpe
 ;
 ;    This file is part of define-ext
 ;
@@ -18,7 +18,7 @@
 ;    along with define-ext_asm.lsp  If not, see <http://www.gnu.org/licenses/>.
 ;
 ; To report bugs, submit patches or give feedback contact Rowan Thorpe at:
-;    rowanthorpe - AT _ gmail _ DOT - com
+;    rowan - AT _ rowanthorpe _ DOT - com
 ;
 ; NB:
 ; (1) If creating an "asm" plugin to use an assembler rather than the embedded

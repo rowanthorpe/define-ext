@@ -1,6 +1,6 @@
 ; define-ext_c.lsp: plugin-file for define-ext, plugin-based
 ;                   foreign code embedder for newLISP (www.newlisp.org)
-; Copyright © 2011 Rowan Thorpe
+; Copyright (c) 2011-2013 Rowan Thorpe
 ;
 ;    This file is part of define-ext
 ;
@@ -18,7 +18,7 @@
 ;    along with define-ext_c.lsp  If not, see <http://www.gnu.org/licenses/>.
 ;
 ; To report bugs, submit patches or give feedback contact Rowan Thorpe at:
-;    rowanthorpe - AT _ gmail _ DOT - com
+;    rowan - AT _ rowanthorpe _ DOT - com
 
 (define (csym-addr) ; [0]=addr, [1]=mangling-number ([1] only for stdcall/Win32)
 	(if (= ostype "Win32")
