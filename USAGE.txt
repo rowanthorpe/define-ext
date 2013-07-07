@@ -1,0 +1,92 @@
+Usage: (define-ext (func-name ([str-code-type] [str-output-type] [strlist-input-types] [strlist-sys-includes]
+                                 [strlist-priv-includes] [str-preamble] [str_and_intlists-add-symbols]))
+                              [int/str-code] [int/str-code] ...)
+
+ * func-name is set unevaluated, all options and code data are evaluated then set
+
+====
+func-name     => sym                   => function name (mandatory)
+====
+code-type     => str                   => "c"|"asm"|"obj"
+   => default ""/'()/nil = "asm"
+   => e.g. "obj"
+====
+output-type   => str                   => C type declaration
+   => default ""/'()/nil = "void"
+   => e.g. "char **"
+====
+input-types   => (strs)                => C type/symbol declarations
+   => default '(""/()/nil/<EMPTY>) = '("void")
+   => e.g. '("int x" "char **y")
+====
+sys-includes  => (strs)                => sys-include-filenames
+   => default '(""/()/nil/<EMPTY>) = '()
+   => e.g. '("stdio.h" "stdlib.h")
+====
+priv-includes => (strs)                => priv-include-filenames
+   => default '(""/()/nil/<EMPTY>) = '()
+   => e.g. '("../lib/mylib.h" "foolib.h")
+====
+preamble      => str                   => preproc, C macro defs, etc
+   => default ""/'()/nil = ""
+   => e.g. "#ifdef __TINYC__\n#define A \"var\"\n#endif\n"
+====
+add-symbols   => ((str, int)..)        => symbol names/addresses to add
+   => default '(""/()/nil/<EMPTY>/("")/(())/(nil)) = '()
+   => e.g. '(("common_func1" 3578930) ("common_func2" 3589002))
+====
+code          => (ints|strs)           => code data
+   => default '(""/'()/nil/<EMPTY>) = '(0x55 0x89 0xE5 0x31 0xC0 0x5D 0xC3) [intel 32bit "return 0"]
+   => e.g. "addl %1, %0; addl %3, %0", or 0x90 0x90 ...
+====
+
+Code Formats:
+ (a) a series of integers representing object code
+ (b) a series of strings, representing code: e.g.
+   (1) within the curly brackets of a C function
+   (2) within the parentheses of an assembly "asm" call (embedded in a C function)
+   (3) other format, as required for processing by your own plugin
+
+---------------
+
+Examples:
+ (module "define-ext.lsp")
+
+ (define-ext (fact ("c" "unsigned int" ("unsigned int n"))) "if (n == 1) return 1; else return n * fact(n - 1);")
+    (fact 19)
+  => 109641728
+
+ (define-ext (print_fact ("c" "unsigned int" ("unsigned int n") () () "" ((fact:name fact:addr)))) "printf(\"result: %d\n\", fact(n)); return 0;")
+    (print_fact 19)
+  -> "result: 109641728"
+  => 0
+
+ (define-ext (c_rename ("c" "int" ("const char *m" "const char *n") ("stdio.h"))) "if (rename(m, n) == 0) return 0; else return 1;")
+    (c_rename (define-ext:set-cstring "file1.txt") (define-ext:set-cstring "file2.txt"))
+
+   [on x86 platform - cdecl (most non-Win32)]
+ (define-ext (addthree ("obj")) 0x55 0x8B 0xEC 0x8B 0x45 0x08 0x03 0x45 0x0c 0x03 0x45 0x10 0x5D 0xC3)
+   [on x86 platform - stdcall (Win32)]
+ (define-ext (addthree ("obj")) 0x55 0x8B 0xEC 0x8B 0x45 0x08 0x03 0x45 0x0c 0x03 0x45 0x10 0x5D 0xC2 0x0C 0x00)
+    (addthree 2 4 9)
+  => 15
+
+   [on x86 platform - cdecl (most other)]
+ (define-ext (addtwo ("asm")) "\"\tmovl 8(%ebp), %eax;\n\taddl 12(%ebp), %eax\"")
+   [on x86 platform - stdcall (Win32)]
+ (define-ext (addtwo ("asm")) "\"\tmovl 8(%ebp), %eax;\n\taddl 12(%ebp), %eax;\n\tpopl %ebp;\n\tret $8\"")
+    (addtwo 3 6)
+  => 9
+
+ (define-ext (no_op))
+    (no_op)
+  => 0
+   ... [options are set to defaults: "obj", "void", '("void"), '(), '() ""; and code => '(0x31 0xC0 0xC3)]
+
+The following symbols are set:
+ [func-name]             = context name
+ [func-name]:name        = function/context name as a string
+ [func-name]:caller      = actual callout to object code
+ [func-name]:obj         = object-code containing function
+ [func-name]:addr        = memory-address of function in object code
+ [func-name]:[func-name] = pull-through function (default functor, invoke with "func-name")

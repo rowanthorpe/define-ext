@@ -1,0 +1,68 @@
+2012-01-10  Rowan Thorpe  <rowanthorpe@gmail.com>
+
+	* Minor-Version bump (v0.4)
+
+	* define-ext.lsp: Added warning when using newlisp-10.3.9 with libffi compiled in.
+
+	* define-ext-settings.lsp: (check-nl-ffi) Added function
+
+	* define-ext-settings.lsp: Moved csym-addr back to define-ext_c.lsp and define-ext_asm.lsp where it should have stayed.
+
+	* define-ext.lsp: Added warning when specifying non-void in/out-types when using asm code-type.
+
+	* define-ext-settings.lsp: (warn) added function
+
+	* define-ext_asm.lsp, define-ext_c.lsp: Added dylib extension for importing tcc on MacOSX, changed .lib to .so for *nix.
+
+	* define-ext-settings.lsp: (get-nl-ver), (check-nl-ver->=), (check-nl-ver-=) Changed from (check-nl-ver) to new functions. All callers changed.
+
+2012-01-07  Rowan Thorpe  <rowanthorpe@gmail.com>
+
+	* Minor-Version bump (v0.3)
+
+	* define-ext.lsp: Added direct-foreign-function-call default functors instead of lambda pull-throughs for people using newLISP 10.3.10 or newer (fallback to previous behaviour otherwise)
+
+	* define-ext.lsp, define-ext_c.lsp, define-ext_asm.lsp: Fixed stdcall handling/mangling to work consistently for Windows.
+
+	* define-ext-settings.lsp: (check-nl-ver), (set-cstring), (import-once), (calloc), (csym-addr)
+	         Moved all generic functions here from define-ext.lsp, including some new ones.
+
+	* define-ext_obj.c: improved default obj-code
+
+	* define-ext.obj: removed duplicate setting of 'plugins (already in define-ext-settings.lsp)
+
+2011-12-27  Rowan Thorpe  <rowanthorpe@gmail.com>
+
+	* Minor-Version bump (v0.2)
+
+	* ChangeLog.txt, USAGE.txt, create-unix-docs.lsp, define-ext-settings.lsp: New files
+
+	* define-ext.lsp: Replaced (letex) with persistant syms.
+
+	* define-ext.lsp: Added checks for no options when code-type=obj
+
+	* define-ext.lsp: Renamed plugin-list -> plugins, module-load-dir -> plugins-load-dir, plugin-combined-source -> buffer, ctype -> plugin, ctype-file -> plugin-file, plugin-load -> plugins-load, plugin-load-files -> plugins-to-load-files
+
+	* define-ext.lsp: Replaced two instances of (extend [x] (list [y])) with (push [y] [x] -1).
+
+	* define-ext_c.lsp, define-ext_asm.lsp, define-ext.lsp: (tcc_add_symbol) Added import command. Added invocation to enable callbacks. Added add-symbols-list option.
+
+	* INSTALL.txt: Added info about creating *nix docs from Windows docs.
+
+	* define-ext.lsp, define-ext_obj.lsp, define-ext_c.lsp, define-ext_asm.lsp: Renamed codetype-set-defaults -> codetype-set-default-code.
+
+	* define-ext.lsp, define-ext_obj.lsp, define-ext_c.lsp, define-ext_asm.lsp: Created throw-error-full, fixed badly written throw-errors.
+
+	* define-ext_c.lsp, define-ext_asm.lsp: (import_once), (set-cstring), (calloc) Created functions. Eliminated duplicated code.
+
+	* define-ext_c.lsp, define-ext_asm.lsp, define-ext.lsp: (codetype-set-local-vars) Removed tcc_* from localising. Made them persistant across (define-ext) invocations.
+
+	* define-ext_obj.lsp, define-ext_c.lsp, define-ext_asm.lsp, define-ext.lsp: Set "func" as a string instead of sym (to avoid 'MAIN:func confusion). Used (sym func) where necessary.
+
+	* define-ext_asm.lsp: Added documentation for (1) code change needed if rewriting to use an assembler rather than asm() in C, (2) advice about using C for extended asm.
+
+	* define-ext.lsp: Changed to save all syms under 'define-ext context (command is default functor).
+
+2011-12-22  Rowan Thorpe  <rowanthorpe@gmail.com>
+
+	* Initial version (v0.1)

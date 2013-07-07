@@ -1,0 +1,17 @@
+1)
+Copy define-ext.lsp to wherever you want to load it from (if you are not sure
+then the:
+ (append (env "NEWLISPDIR") "/modules")
+directory is a sensible choice.
+
+2)
+Copy the plugin files e.g. "define-ext_[CODE-TYPE].lsp" into either the
+module-load directory specified near the top of "define-ext.lsp" (clearly
+marked, for editing) or into:
+ (append (env "NEWLISPDIR") "/modules")
+as default.
+
+3)
+To (re)create docs with unix EOLs from docs with Windows EOLs, using newLISP:
+ (change-dir "[define-ext_base_directory]/src")
+ (load "../tools/create-unix-docs.lsp)
