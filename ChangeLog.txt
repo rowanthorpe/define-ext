@@ -1,32 +1,34 @@
 2013-07-07  Rowan Thorpe <rowan@rowanthorpe.com>
 
-	* Actually add TODO in git(!).
+	* Patch-Version bump (v0.4.2).
 
-	* Add "features" from sourceforge to README.
+	* TODO.txt: Actually add to git(!).
 
-	* Fix whitespace in ChangeLog.
+	* README.txt: Add "features" from sourceforge.
 
-	* Remove unnecessary extra newlisp link in README.
+	* ChangeLog.txt: Fix whitespace, format.
+
+	* README.txt: Remove unnecessary extra newlisp link.
 
 2013-07-07  Rowan Thorpe  <rowan@rowanthorpe.com>
 
-	* Patch-Version bump (v0.4.1)
+	* Patch-Version bump (v0.4.1).
 
-	* Separate TODOs into a TODO file.
+	* TODO.txt: Separate TODOs.
 
-	* Update contact email address.
+	* README.txt, define-ext-settings.lsp, define-ext.lsp, define-ext_asm.lsp, define-ext_c.lsp, define-ext_obj.lsp: Update contact email address.
 
-	* Update copyright years.
+	* README.txt, define-ext-settings.lsp, define-ext.lsp, define-ext_asm.lsp, define-ext_c.lsp, define-ext_obj.lsp: Update copyright years.
 
 	* Migrate from sourceforge to github hosting.
 
-	* Add summary info and use ASCII-friendly copyright symbol in README.
+	* README.txt: Add summary info and use ASCII-friendly copyright symbol.
 
-	* Add empty .gitignore
+	* .gitignore: Add empty
 
 2012-01-10  Rowan Thorpe  <rowanthorpe@gmail.com>
 
-	* Minor-Version bump (v0.4)
+	* Minor-Version bump (v0.4).
 
 	* define-ext.lsp: Added warning when using newlisp-10.3.9 with libffi compiled in.
 
