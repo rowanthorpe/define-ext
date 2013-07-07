@@ -1,22 +1,28 @@
+2013-07-07  Rowan Thorpe <rowan@rowanthorpe.com>
+
+	* Actually add TODO in git(!).
+
+	* Add "features" from sourceforge to README.
+
+	* Fix whitespace in ChangeLog.
+
+	* Remove unnecessary extra newlisp link in README.
+
 2013-07-07  Rowan Thorpe  <rowan@rowanthorpe.com>
 
-    * Remove unnecessary extra newlisp link in README.
+	* Patch-Version bump (v0.4.1)
 
-2013-07-07  Rowan Thorpe  <rowan@rowanthorpe.com>
+	* Separate TODOs into a TODO file.
 
-    * Patch-Version bump (v0.4.1)
+	* Update contact email address.
 
-    * Separate TODOs into a TODO file.
+	* Update copyright years.
 
-    * Update contact email address.
+	* Migrate from sourceforge to github hosting.
 
-    * Update copyright years.
+	* Add summary info and use ASCII-friendly copyright symbol in README.
 
-    * Migrate from sourceforge to github hosting.
-
-    * Add summary info and use ASCII-friendly copyright symbol in README.
-
-    * Add empty .gitignore
+	* Add empty .gitignore
 
 2012-01-10  Rowan Thorpe  <rowanthorpe@gmail.com>
 

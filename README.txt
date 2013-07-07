@@ -11,6 +11,13 @@ TCC don't include the .dll/.so file, but it can be easily compiled from the
 source releases). New plugins for other compiled languages (like Fortran or
 ECL) should be trivially easy to create using the existing ones as templates.
 
+Features
+========
+
+* Portable
+* Small
+* Extensible
+
 See USAGE for usage details and examples.
 See COPYING for license details.
 See INSTALL for installation instructions.
