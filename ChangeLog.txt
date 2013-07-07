@@ -1,5 +1,9 @@
 2013-07-07  Rowan Thorpe  <rowan@rowanthorpe.com>
 
+    * Remove unnecessary extra newlisp link in README.
+
+2013-07-07  Rowan Thorpe  <rowan@rowanthorpe.com>
+
     * Patch-Version bump (v0.4.1)
 
     * Separate TODOs into a TODO file.
